@@ -46,7 +46,11 @@ class MainFragment : Fragment(), View.OnClickListener {
     }
 
     private fun calculate(){
+        val height = editHeight.text.toString().toFloat()
+        val weight = editWeight.text.toString().toFloat()
 
+        val result = weight/(height*height)
+        textBMIResult.text = "${"%.2f".format(result)}"
     }
 
 }
