@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.example.fda.MainActivity
 import com.example.fda.MainViewModel
 import com.example.fda.R
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -16,9 +18,9 @@ class MainFragment : Fragment(), View.OnClickListener {
     private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
@@ -45,12 +47,18 @@ class MainFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun calculate(){
-        val height = editHeight.text.toString().toFloat()
-        val weight = editWeight.text.toString().toFloat()
+    private fun calculate() {
+        if (validationOk()) {
+            val height = editHeight.text.toString().toFloat()
+            val weight = editWeight.text.toString().toFloat()
 
-        val result = weight/(height*height)
-        textBMIResult.text = "${"%.2f".format(result)}"
+            val result = weight / (height * height)
+            textBMIResult.text = "${"%.2f".format(result)}"
+        }
+    }
+
+    private fun validationOk(): Boolean {
+        return (editHeight.text.toString() != "" && editWeight.text.toString() != "")
     }
 
 }
