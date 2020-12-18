@@ -28,12 +28,12 @@ class EmailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*buttonEmail.setOnClickListener{
-            val address = "marcotargino2013@gmail.com"
-            val subject = x
-            val message = y
+        buttonSend.setOnClickListener{
+            val address = editAddress.text.toString().trim()
+            val subject = editSubject.text.toString().trim()
+            val message = editMessage.text.toString().trim()
                 composeEmail(address, subject, message)
-        }*/
+        }
 
         buttonBack2.setOnClickListener {
             findNavController().navigate(R.id.action_emailFragment_to_listFragment)
